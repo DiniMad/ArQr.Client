@@ -1,5 +1,5 @@
 import {Global, css} from '@emotion/react'
-import {cssVariables, themes} from "../utils"
+import {cssVariables, primaryFont, themes, typeScale} from "../utils"
 
 export function GlobalStyles() {
     const style = css`
@@ -11,10 +11,13 @@ export function GlobalStyles() {
 
       html, body {
         font-size: 10px;
-        ${cssVariables.background}: ${themes.dark.background};
-        ${cssVariables.primaryDark}: ${themes.dark.primaryDark};
-        ${cssVariables.primary}: ${themes.dark.primary};
-        ${cssVariables.primaryLight}: ${themes.dark.primaryLight};
+        font-family: ${primaryFont};
+        ${cssVariables.theme.background}: ${themes.dark.background};
+        ${cssVariables.theme.primaryDark}: ${themes.dark.primaryDark};
+        ${cssVariables.theme.primary}: ${themes.dark.primary};
+        ${cssVariables.theme.primaryLight}: ${themes.dark.primaryLight};
+        ${cssVariables.typeScale.title1}: ${typeScale.title1};
+        ${cssVariables.typeScale.title2}: ${typeScale.title2};
       }
 
       a {
