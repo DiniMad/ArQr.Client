@@ -1,5 +1,7 @@
 export const cssVariables = {
     background: "--background",
+    primaryDark: "--primary-dark",
+    primary: "--primary",
     primaryLight: "--primary-light",
 }
 

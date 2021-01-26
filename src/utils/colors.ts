@@ -5,9 +5,9 @@ const black = {
 }
 
 const purple = {
-    100: "#3a174a",
-    200: "#732991",
-    300: "#963dbf",
+    100: "#732991",
+    200: "#963dbf",
+    300: "#ca6ef2",
 }
 
 const colors = {
