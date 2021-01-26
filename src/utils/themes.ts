@@ -9,8 +9,6 @@ const dark = {
     primaryLight: colors.purple[300],
 }
 
-const themes = {
+export const themes = {
     dark
 }
-
-export default themes;

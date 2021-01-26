@@ -1,6 +1,7 @@
 import {Global, css} from '@emotion/react'
+import {cssVariables,themes} from "../utils"
 
-function GlobalStyles() {
+export function GlobalStyles() {
     const style = css`
       * {
         margin: 0;
@@ -10,6 +11,8 @@ function GlobalStyles() {
 
       html, body {
         font-size: 10px;
+        ${cssVariables.background}: ${themes.dark.background};
+        ${cssVariables.primaryLight}: ${themes.dark.primaryLight};
       }
 
       a {
@@ -24,5 +27,3 @@ function GlobalStyles() {
 
     return <Global styles={style}/>
 }
-
-export default GlobalStyles;
