@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/ArQr.Client/static/js/main.a105643f.chunk.js",
+    "main.js.map": "/ArQr.Client/static/js/main.a105643f.chunk.js.map",
+    "runtime-main.js": "/ArQr.Client/static/js/runtime-main.4ff4f9c8.js",
+    "runtime-main.js.map": "/ArQr.Client/static/js/runtime-main.4ff4f9c8.js.map",
+    "static/js/2.5b699051.chunk.js": "/ArQr.Client/static/js/2.5b699051.chunk.js",
+    "static/js/2.5b699051.chunk.js.map": "/ArQr.Client/static/js/2.5b699051.chunk.js.map",
+    "static/js/3.2f31a7bc.chunk.js": "/ArQr.Client/static/js/3.2f31a7bc.chunk.js",
+    "static/js/3.2f31a7bc.chunk.js.map": "/ArQr.Client/static/js/3.2f31a7bc.chunk.js.map",
+    "index.html": "/ArQr.Client/index.html",
+    "static/js/2.5b699051.chunk.js.LICENSE.txt": "/ArQr.Client/static/js/2.5b699051.chunk.js.LICENSE.txt",
+    "static/media/login.de02e679.svg": "/ArQr.Client/static/media/login.de02e679.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4ff4f9c8.js",
+    "static/js/2.5b699051.chunk.js",
+    "static/js/main.a105643f.chunk.js"
+  ]
+}
