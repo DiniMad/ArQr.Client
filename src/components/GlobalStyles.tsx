@@ -38,6 +38,10 @@ export function GlobalStyles() {
       input[type=number] {
         -moz-appearance: textfield;
       }
+      
+      .notification.notification{
+        font-size: ${typeScale.title2};
+      }
     `;
 
     return <Global styles={style}/>
