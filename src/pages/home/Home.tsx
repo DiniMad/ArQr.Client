@@ -4,18 +4,22 @@ import LoginForm from "./LoginForm";
 import {cvar} from "../../utils";
 import {illustration} from "../../assets";
 import {Box} from "@material-ui/core";
+import LensBackground from "./LensBackground";
 
 function Home() {
     return (
         <Container>
             <HeadImage src={illustration.Login} alt="banner"/>
             <Box my="3rem"/>
-            <LoginForm/>    
+            <Content>
+                <LensBackground/>
+                <LoginForm/>
+            </Content>
         </Container>
     );
 }
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,5 +33,9 @@ const HeadImage = styled.img`
   max-width: 80%;
   max-height: 40%;
 `
-
+const Content = styled.section`
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 100%;
+`;
 export default Home;

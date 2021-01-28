@@ -7,6 +7,8 @@ import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Lock, Phone} from "@material-ui/icons";
 import {SnackbarKey, useSnackbar} from 'notistack';
+import Home from "./Home";
+import {keyframes} from "@emotion/react";
 
 
 const initialValue = {
@@ -30,8 +32,7 @@ const formSchema = yup.object({
     password: yup.string().matches(passwordRegex, errorMessages.password.regex).required(errorMessages.password.required),
 });
 
-function LoginForm() {
-
+const LoginForm = () => {
     const {handleSubmit, register, errors} = useForm({
         mode: "onBlur",
         defaultValues: initialValue,
@@ -91,6 +92,11 @@ function LoginForm() {
 }
 
 const Form = styled.form`
+  ${Home as any} & {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
