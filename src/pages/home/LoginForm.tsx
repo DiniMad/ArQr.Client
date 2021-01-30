@@ -8,7 +8,6 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {Lock, Phone} from "@material-ui/icons";
 import {SnackbarKey, useSnackbar} from 'notistack';
 import Home from "./Home";
-import {keyframes} from "@emotion/react";
 
 
 const initialValue = {
@@ -40,10 +39,11 @@ const LoginForm = () => {
     });
     const {enqueueSnackbar, closeSnackbar} = useSnackbar()
 
+    const errorValues = Object.values(errors);
     const notificationKey = useRef<SnackbarKey>();
     useEffect(() => {
         displayErrors();
-    }, [Object.values(errors)])
+    }, [errorValues])
 
     const displayErrors = () => {
         const phoneNumberError = errors.phoneNumber && errors.phoneNumber.message
@@ -57,6 +57,7 @@ const LoginForm = () => {
     }
 
     const notifyError = (error: string) => {
+        closeSnackbar(notificationKey.current);
         notificationKey.current = enqueueSnackbar(error, {
             variant: "error",
             anchorOrigin: {
@@ -72,21 +73,24 @@ const LoginForm = () => {
         console.log(data)
     }
 
+    const navigateToRegisterPage = () => {
+    }
+
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <InputBox>
                 <PhoneIcon fontSize="large"/>
                 <Input inputRef={register} name="phoneNumber" label="شماره تلفن" type="number" dir="rtl"/>
             </InputBox>
-            <Box my="2rem"/>
+            <Box my="1.5rem"/>
             <InputBox>
                 <LockIcon fontSize="large"/>
                 <Input inputRef={register} name="password" label="رمز عبور" type="password" dir="rtl"/>
             </InputBox>
-            <Box my="3rem"/>
-            <SubmitButton href={undefined} type="submit" variant="outlined">
-                ورود
-            </SubmitButton>
+            <Box my="2.5rem"/>
+            <SubmitButton href={undefined} type="submit" variant="outlined">ورود</SubmitButton>
+            <Box my=".5rem"/>
+            <RegisterPageButton href={undefined} onClick={navigateToRegisterPage}>ساخت حساب</RegisterPageButton>
         </Form>
     );
 }
@@ -131,11 +135,11 @@ const Input = styled(TextField)`
     }
 
     &:after {
-      border-bottom-color: ${cvar("primary")};
+      border-bottom-color: ${cvar("primaryLight")};
     }
 
     &:hover:not(.Mui-disabled):before {
-      border-bottom-color: ${cvar("primaryLight")};
+      border-bottom-color: ${cvar("primary")};
     }
   }
 `
@@ -151,5 +155,18 @@ const SubmitButton = styled(Button)`
     }
   }
 `
+
+const RegisterPageButton = styled(Button)`
+  && {
+    font-size: ${cvar("title2")};
+    color: ${cvar("primary")};
+    transition: color .5s;
+
+    &:hover {
+      background: transparent;
+      color: ${cvar("primaryLight")};
+    }
+  }
+`;
 
 export default LoginForm;
