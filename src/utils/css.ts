@@ -23,7 +23,7 @@ type cssVariableKeys = themeKeys | typeScaleKeys;
 
 export function cvar(key: themeKeys): string;
 export function cvar(key: typeScaleKeys): string;
-export function cvar<T>(key: cssVariableKeys): string {
+export function cvar(key: cssVariableKeys): string {
     if (isKeyOf(key, theme)) {
         return `var(${theme[key]})`;
     }
