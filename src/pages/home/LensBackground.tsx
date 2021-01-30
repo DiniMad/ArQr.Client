@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import styled from "@emotion/styled";
 import {svg} from "../../assets"
 import {keyframes} from "@emotion/react";
 import QRCode from "qrcode.react"
 import {cvar, themes} from "../../utils"
-import Home from "./Home";
 
-const LensBackground = () => {
+interface IProps {
+    changeContent: () => void
+}
+
+const LensBackground: FunctionComponent<IProps> = ({changeContent}) => {
+    const animationDuration = (containerDelay + containerDuration) * 1000;
+    setTimeout(() => changeContent(), animationDuration)
+
     return (
         <Container>
             <LensImage src={svg.Lens}/>
@@ -43,12 +49,6 @@ const containerDelay = lensDelay + lensDuration;
 const containerDuration = 1;
 
 const Container = styled.div`
-  ${Home as any} & {
-    grid-row: 1;
-    grid-column: 1;
-    z-index: 1;
-  }
-
   display: flex;
   justify-content: center;
   align-items: center;

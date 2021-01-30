@@ -1,41 +1,55 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "@emotion/styled";
 import LoginForm from "./LoginForm";
 import {cvar} from "../../utils";
 import {illustration} from "../../assets";
-import {Box} from "@material-ui/core";
 import LensBackground from "./LensBackground";
+import RegisterForm from "./RegisterForm";
 
-function Home() {
+const Home = () => {
+    const [contentState, setContentState] = useState<"lens" | "login" | "register">("lens")
+
+    const setLoginContent = () => setContentState("login");
+    const setRegisterContent = () => setContentState("register");
+
     return (
         <Container>
-            <HeadImage src={illustration.Login} alt="banner"/>
-            <Box my="3rem"/>
+            <Banner> <img src={illustration.Login} alt="banner"/> </Banner>
             <Content>
-                <LensBackground/>
-                <LoginForm/>
+                {contentState === "lens" && <LensBackground changeContent={setLoginContent}/>}
+                {contentState === "login" && <LoginForm changeContent={setRegisterContent}/>}
+                {contentState === "register" && <RegisterForm changeContent={setLoginContent}/>}
             </Content>
         </Container>
     );
 }
-
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   background: ${cvar("background")};
 `
 
-const HeadImage = styled.img`
-  max-width: 80%;
-  max-height: 40%;
-`
-const Content = styled.section`
-  display: grid;
-  grid-template-rows: 100%;
-  grid-template-columns: 100%;
+const Banner = styled.div`
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  img {
+    max-width: 85%;
+  }
 `;
+
+const Content = styled.section`
+  flex: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default Home;

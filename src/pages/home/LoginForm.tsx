@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {FunctionComponent, useEffect, useRef} from 'react';
 import styled from "@emotion/styled";
 import {Box, Button, TextField} from "@material-ui/core";
 import {cvar} from "../../utils";
@@ -7,8 +7,7 @@ import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Lock, Phone} from "@material-ui/icons";
 import {SnackbarKey, useSnackbar} from 'notistack';
-import Home from "./Home";
-
+import {keyframes} from "@emotion/react";
 
 const initialValue = {
     phoneNumber: "",
@@ -16,7 +15,7 @@ const initialValue = {
 }
 const errorMessages = {
     phoneNumber: {
-        lengh: "شماره تلفن باید 11 رقم باشد",
+        length: "شماره تلفن باید 11 رقم باشد",
         required: "شماره تلفن وارد نشده است.",
     },
     password: {
@@ -27,11 +26,19 @@ const errorMessages = {
 // 6 Characters, at least one letter and one number.
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 const formSchema = yup.object({
-    phoneNumber: yup.string().length(11, errorMessages.phoneNumber.lengh).required(errorMessages.phoneNumber.required),
-    password: yup.string().matches(passwordRegex, errorMessages.password.regex).required(errorMessages.password.required),
+    phoneNumber: yup.string()
+        .length(11, errorMessages.phoneNumber.length)
+        .required(errorMessages.phoneNumber.required),
+    password: yup.string()
+        .matches(passwordRegex, errorMessages.password.regex)
+        .required(errorMessages.password.required),
 });
 
-const LoginForm = () => {
+interface IProps {
+    changeContent: () => void
+}
+
+const LoginForm: FunctionComponent<IProps> = ({changeContent}) => {
     const {handleSubmit, register, errors} = useForm({
         mode: "onBlur",
         defaultValues: initialValue,
@@ -73,9 +80,6 @@ const LoginForm = () => {
         console.log(data)
     }
 
-    const navigateToRegisterPage = () => {
-    }
-
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <InputBox>
@@ -90,21 +94,28 @@ const LoginForm = () => {
             <Box my="2.5rem"/>
             <SubmitButton href={undefined} type="submit" variant="outlined">ورود</SubmitButton>
             <Box my=".5rem"/>
-            <RegisterPageButton href={undefined} onClick={navigateToRegisterPage}>ساخت حساب</RegisterPageButton>
+            <RegisterPageButton href={undefined} onClick={changeContent}>ساخت حساب</RegisterPageButton>
         </Form>
     );
 }
 
-const Form = styled.form`
-  ${Home as any} & {
-    grid-row: 1;
-    grid-column: 1;
+const slidInAnimation = keyframes`
+  from {
+    margin-right: -20rem;
+    opacity: 0;
   }
+  to {
+    margin-right: 0;
+    opacity: 1;
+  }
+`
 
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  animation: ${slidInAnimation} 1s forwards;
 `
 const InputBox = styled.div`
   display: flex;
