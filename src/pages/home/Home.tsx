@@ -35,7 +35,7 @@ const Container = styled.div`
 `
 
 const Banner = styled.div`
-  flex: 3;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -46,7 +46,7 @@ const Banner = styled.div`
 `;
 
 const Content = styled.section`
-  flex: 5;
+  flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
