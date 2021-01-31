@@ -9,7 +9,7 @@ interface IProps {
     changeContent: () => void
 }
 
-const LensBackground: FunctionComponent<IProps> = ({changeContent}) => {
+const QrCodePreview: FunctionComponent<IProps> = ({changeContent}) => {
     const animationDuration = (containerDelay + containerDuration) * 1000;
     setTimeout(() => changeContent(), animationDuration)
 
@@ -73,4 +73,4 @@ const LensImage = styled.img`
   animation: ${flashKeyframe} ${lensDuration}s both ${lensDelay}s;
 `;
 
-export default LensBackground;
+export default QrCodePreview;
