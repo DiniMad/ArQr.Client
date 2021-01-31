@@ -1,6 +1,7 @@
 import {isKeyOf} from "./common";
 
 const theme = {
+    backgroundDark: "--background-dark",
     background: "--background",
     primaryDark: "--primary-dark",
     primary: "--primary",

@@ -12,6 +12,7 @@ export function GlobalStyles() {
       html, body {
         font-size: 10px;
         font-family: ${primaryFont};
+        ${cssVariables.theme.backgroundDark}: ${themes.dark.backgroundDark};
         ${cssVariables.theme.background}: ${themes.dark.background};
         ${cssVariables.theme.primaryDark}: ${themes.dark.primaryDark};
         ${cssVariables.theme.primary}: ${themes.dark.primary};
