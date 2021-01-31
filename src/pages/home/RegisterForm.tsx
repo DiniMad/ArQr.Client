@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
 import styled from "@emotion/styled";
 import {Lock, Phone} from "@material-ui/icons";
-import {cvar} from "../../utils";
+import {cvar, mediaQueries} from "../../utils";
 import {Box, Button, TextField} from "@material-ui/core";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -133,7 +133,10 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  animation: ${slideInAnimation} 1s forwards;
+
+  @media (max-width: ${mediaQueries.mobileMaxWidth}px) {
+    animation: ${slideInAnimation} 1s forwards;
+  }
 `
 const InputBox = styled.div`
   display: flex;

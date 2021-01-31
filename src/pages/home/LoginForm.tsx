@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
 import styled from "@emotion/styled";
 import {Box, Button, TextField} from "@material-ui/core";
-import {cvar} from "../../utils";
+import {cvar, mediaQueries} from "../../utils";
 import {useForm} from "react-hook-form";
 import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -99,7 +99,7 @@ const LoginForm: FunctionComponent<IProps> = ({changeContent}) => {
     );
 }
 
-const slidInAnimation = keyframes`
+const slideInAnimation = keyframes`
   from {
     margin-right: -20rem;
     opacity: 0;
@@ -115,8 +115,12 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  animation: ${slidInAnimation} 1s forwards;
+  
+  @media (max-width: ${mediaQueries.mobileMaxWidth}px) {
+    animation: ${slideInAnimation} 1s forwards;
+  }
 `
+
 const InputBox = styled.div`
   display: flex;
   justify-content: center;
